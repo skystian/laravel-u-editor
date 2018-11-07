@@ -54,7 +54,7 @@ class UploadFile  extends Upload{
             return false;
         }
 
-        if(config('UEditorUpload.core.mode')=='local'){
+        if(config('UEditorUpload.core.mode') == 'local') {
             try {
                 $this->file->move(dirname($this->filePath), $this->fileName);
 
@@ -65,18 +65,23 @@ class UploadFile  extends Upload{
                 return false;
             }
 
-        }else if(config('UEditorUpload.core.mode')=='qiniu'){
+        } else if(config('UEditorUpload.core.mode') == 'qiniu') {
 
             $content=file_get_contents($this->file->getPathname());
             return $this->uploadQiniu($this->filePath,$content);
 
-        }else{
+        } else if (config('UEditorUpload.core.mode') == 'oss') {
+
+            $response = $file->store('images');
+
+            $this->fullName = \Storage::url($response);
+            $this->stateInfo = 'SUCCESS';
+
+        } else{
+
             $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
             return false;
         }
-
-
-
 
         return true;
 
