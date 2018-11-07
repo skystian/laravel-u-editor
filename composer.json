@@ -4,16 +4,13 @@
   "keywords": [
     "laravel",
     "ueditor",
-    "laravel-u-editor",
-    "laravel5 web text editor",
-    "stevenyangecho",
-    "steven yang"
+    "laravel-u-editor"
   ],
   "license": "MIT",
   "authors": [
     {
-      "name": "Steven Yang",
-      "email": "yqmking@163.com"
+      "name": "skystian",
+      "email": "sky.sky.tian@qq.com"
     }
   ],
 
